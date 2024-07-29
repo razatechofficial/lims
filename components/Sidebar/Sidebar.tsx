@@ -49,6 +49,16 @@ const Sidebar: React.FC<any> = ({ children }) => {
                 <span className={`ml-3 block`}>Users</span>
               </Link>
             </li>
+            
+            <li>
+              <Link
+                href="/map"
+                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group dark:text-gray-100 hover:bg-indigo-50 text-gray-600 dark:hover:bg-indigo-100 dark:hover:text-indigo-700`}
+              >
+                <Home size={20} />
+                <span className={`ml-3 block`}>UGV Map</span>
+              </Link>
+            </li>
             {children}
           </ul>
 
