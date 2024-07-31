@@ -1,5 +1,7 @@
 import { Bell, Search, User } from "lucide-react";
 import React from "react";
+import ThemeSwitch from "../Theme/ThemeSwitcher";
+// import ThemeSwitch, { ThemeToggleButton } from "../Theme/ThemeSwitcher";
 
 const NavBar = () => {
   return (
@@ -20,6 +22,8 @@ const NavBar = () => {
       {/* Icons */}
       <div className="flex items-center space-x-4 ">
         {/* <ThemeToggleButton /> */}
+        {/* <ThemeToggleButton /> */}
+        <ThemeSwitch />
         <Bell className="cursor-pointer" />
         <User className="cursor-pointer" />
       </div>

@@ -1,11 +1,12 @@
 "use client";
 import { Home, MoreVertical, Menu } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
 
 const Sidebar: React.FC<any> = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname(); // Get the current pathname
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -33,7 +34,11 @@ const Sidebar: React.FC<any> = ({ children }) => {
             <li>
               <Link
                 href="/"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group dark:text-gray-700 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800`}
+                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
+                  pathname === "/"
+                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
+                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
+                }`}
               >
                 <Home size={20} />
                 <span className={`ml-3 block`}>Home</span>
@@ -43,17 +48,25 @@ const Sidebar: React.FC<any> = ({ children }) => {
             <li>
               <Link
                 href="/users"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group dark:text-gray-100 hover:bg-indigo-50 text-gray-600 dark:hover:bg-indigo-100 dark:hover:text-indigo-700`}
+                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
+                  pathname === "/users"
+                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
+                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
+                }`}
               >
                 <Home size={20} />
                 <span className={`ml-3 block`}>Users</span>
               </Link>
             </li>
-            
+
             <li>
               <Link
                 href="/map"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group dark:text-gray-100 hover:bg-indigo-50 text-gray-600 dark:hover:bg-indigo-100 dark:hover:text-indigo-700`}
+                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
+                  pathname === "/map"
+                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
+                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
+                }`}
               >
                 <Home size={20} />
                 <span className={`ml-3 block`}>UGV Map</span>
@@ -72,10 +85,14 @@ const Sidebar: React.FC<any> = ({ children }) => {
             />
 
             {/* Sidebar footer user details */}
-            <div className={`flex justify-between items-center overflow-hidden transition-all w-52 ml-3`}>
+            <div
+              className={`flex justify-between items-center overflow-hidden transition-all w-52 ml-3`}
+            >
               <div className="leading-4">
                 <h4 className="font-semibold">Lims Admin</h4>
-                <span className="text-xs text-gray-600 dark:text-gray-300">admin@lims.org</span>
+                <span className="text-xs text-gray-600 dark:text-gray-300">
+                  admin@lims.org
+                </span>
               </div>
               {/* More options icon */}
               <MoreVertical size={20} />
