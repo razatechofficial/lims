@@ -1,78 +1,98 @@
 "use client";
-import { Home, MoreVertical, Menu } from "lucide-react";
+import { Home, MoreVertical, Menu, ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
-import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
+import React from "react";
+import { usePathname } from "next/navigation";
+import { useSidebar } from "@/context/SidebarContext";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const Sidebar: React.FC<any> = ({ children }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const { isSidebarOpen, toggleSidebar } = useSidebar(); // Use context values
   const pathname = usePathname(); // Get the current pathname
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
+  const { theme } = useTheme(); // Access the current theme
+  const navItems = [
+    { path: "/", label: "Home", icon: <Home size={20} />, isAlert: true },
+    { path: "/users", label: "Users", icon: <Home size={20} />, isAlert: true },
+    { path: "/map", label: "UGVMap", icon: <Home size={20} />, isAlert: false },
+  ];
 
   return (
     <>
-      {/* Toggle Button for Mobile */}
-      <button
-        onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded-md"
-      >
-        <Menu size={24} />
-      </button>
-
       <aside
         className={`h-screen fixed z-40 lg:relative transition-all duration-300 ${
-          isSidebarOpen ? "left-0" : "-left-64"
-        } lg:left-0 w-64 lg:w-auto`}
+          isSidebarOpen ? "w-64" : "w-16"
+        } lg:w-auto`}
       >
-        <nav className="h-full flex flex-col dark:bg-slate-900 dark:text-gray-100 duration-100 border-r dark:border-slate-500 shadow-sm">
-          <h1 className="m-4 text-sm lg:text-xl font-bold">LIMS</h1>
+        <nav className="h-full flex flex-col bg-white dark:bg-slate-900 dark:text-gray-100 duration-100 border-r dark:border-slate-500 shadow-sm">
+          {/* Sidebar Logo with Toggle btn */}
+          <div className="p-4 pb-2 flex justify-between items-center">
+            {/* Sidebar Logo */}
+            <Image
+              alt="LIMS Logo"
+              height={isSidebarOpen ? 50 : 40}
+              width={isSidebarOpen ? 50 : 40}
+              src={
+                theme === "light"
+                  ? "/assets/images/lims1.png"
+                  : "/assets/images/lims.png"
+              }
+              className={`overflow-hidden transition-all`}
+            />
+            {isSidebarOpen && (
+              <span className="ml-1 text-xl font-bold">LIMS Pakistan</span>
+            )}
 
-          <ul className="flex-1 px-3 mt-10">
-            <li>
-              <Link
-                href="/"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-                  pathname === "/"
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
-                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
-                }`}
+            {/* Sidebar Toggle btn */}
+            {isSidebarOpen && (
+              <button
+                className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-100 duration-100 dark:hover:text-sky-600"
+                onClick={toggleSidebar}
               >
-                <Home size={20} />
-                <span className={`ml-3 block`}>Home</span>
-              </Link>
-            </li>
+                <ChevronLeft absoluteStrokeWidth strokeWidth={1.5} />
+              </button>
+            )}
+          </div>
+          <ul className={`flex-1 px-3 ${isSidebarOpen ? "mt-4" : ""}`}>
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  href={item.path}
+                  className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group dark:text-gray-100 ${
+                    pathname === item.path
+                      ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-indigo-800"
+                      : "hover:bg-indigo-50 text-gray-600 dark:hover:bg-indigo-100 dark:hover:text-indigo-700"
+                  }`}
+                >
+                  {item.icon}
 
-            <li>
-              <Link
-                href="/users"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-                  pathname === "/users"
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
-                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
-                }`}
-              >
-                <Home size={20} />
-                <span className={`ml-3 block`}>Users</span>
-              </Link>
-            </li>
+                  <span
+                    className={`overflow-hidden transition-all ${
+                      isSidebarOpen ? "w-52 ml-3" : "w-0"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
 
-            <li>
-              <Link
-                href="/map"
-                className={`flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-                  pathname === "/map"
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 dark:text-gray-700"
-                    : "text-gray-600 dark:text-gray-100 hover:bg-indigo-50 dark:hover:bg-indigo-100"
-                }`}
-              >
-                <Home size={20} />
-                <span className={`ml-3 block`}>UGV Map</span>
-              </Link>
-            </li>
-            {children}
+                  {/* Sidebar Item Alert dot */}
+                  {item.isAlert && (
+                    <div
+                      className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
+                        isSidebarOpen ? "" : "top-2"
+                      }`}
+                    ></div>
+                  )}
+                  {/* If sidebar is closed then show the item name on hover */}
+                  {!isSidebarOpen && (
+                    <div
+                      className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+                    >
+                      {item.label}
+                    </div>
+                  )}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           {/* Sidebar footer with profile icon and loggedin user details */}
@@ -86,7 +106,12 @@ const Sidebar: React.FC<any> = ({ children }) => {
 
             {/* Sidebar footer user details */}
             <div
-              className={`flex justify-between items-center overflow-hidden transition-all w-52 ml-3`}
+              className={`
+            flex justify-between items-center
+            overflow-hidden transition-all ${
+              isSidebarOpen ? "w-52 ml-3" : "w-0"
+            }
+        `}
             >
               <div className="leading-4">
                 <h4 className="font-semibold">Lims Admin</h4>
@@ -100,14 +125,6 @@ const Sidebar: React.FC<any> = ({ children }) => {
           </div>
         </nav>
       </aside>
-
-      {/* Overlay for Mobile Sidebar */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-30 lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
     </>
   );
 };

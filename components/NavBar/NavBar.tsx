@@ -1,13 +1,25 @@
-import { Bell, Search, User } from "lucide-react";
+"use client";
+import { Bell, Menu, Search, User } from "lucide-react";
 import React from "react";
 import ThemeSwitch from "../Theme/ThemeSwitcher";
-// import ThemeSwitch, { ThemeToggleButton } from "../Theme/ThemeSwitcher";
+import { useSidebar } from "@/context/SidebarContext";
 
 const NavBar = () => {
+  const { isSidebarOpen, toggleSidebar } = useSidebar();
   return (
-    <nav className="flex sticky top-0 items-center justify-between dark:bg-slate-900 dark:text-gray-100 duration-100 px-4 py-2 shadow-sm border-b dark:border-slate-500 lg:pl-4 pl-20">
-      <h1 className="ml-1 text-sm lg:text-xl font-bold">Dashboard</h1>
+    <nav className="flex sticky z-10 top-0 items-center justify-between dark:bg-slate-900 dark:text-gray-100 duration-100 px-4 py-2 shadow-sm border-b dark:border-slate-500 lg:pl-4 pl-20">
+      <div className="flex items-center">
+        {!isSidebarOpen && (
+          <button
+            onClick={toggleSidebar}
+            className=" rounded-lg dark:text-gray-100 duration-100 dark:hover:text-sky-600"
+          >
+            <Menu absoluteStrokeWidth strokeWidth={1.2} size={24} />
+          </button>
+        )}
 
+        <h1 className="ml-1 text-sm lg:text-xl font-bold">Dashboard</h1>
+      </div>
       {/* Search Bar */}
       <div className="flex-2 mx-4 hidden md:block">
         <div className="relative">

@@ -68,21 +68,23 @@ const LeafletMap: React.FC = () => {
   const initialPosition: LatLngExpression = [30.3753, 69.3451]; // Center of Pakistan
 
   return (
-    <MapContainer
-      center={initialPosition}
-      zoom={5}
-      style={{ height: "70vh", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {markers.map((marker, index) => (
-        <Marker key={index} position={marker.position} icon={vehicleIcon}>
-          <Popup>{marker.popup}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <div>
+      <MapContainer
+        center={initialPosition}
+        zoom={5}
+        style={{ height: "70vh", width: "100%" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {markers.map((marker, index) => (
+          <Marker key={index} position={marker.position} icon={vehicleIcon}>
+            <Popup>{marker.popup}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 };
 

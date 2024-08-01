@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <h1 className="text-2xl font-semibold">Home</h1>
@@ -8,7 +8,7 @@ const page = () => {
       <div className="mt-4">
         <p>Welcome admin!</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-          <div className="p-4  border-slate-800 dark:bg-slate-800 dark:text-gray-200 dark:border-slate-500  rounded ring-1 ring-slate-900/5 shadow-xl">
+          <div className="p-4 border-slate-800 dark:bg-slate-800 dark:text-gray-200 dark:border-slate-500 rounded ring-1 ring-slate-900/5 shadow-xl">
             Total UGV's
             <br />
             <span className="text-5xl font-light md:text-6xl dark:text-white">
@@ -26,16 +26,16 @@ const page = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17.25 15.25V6.75H8.75"
                 ></path>
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17 7L6.75 17.25"
                 ></path>
               </svg>
@@ -60,16 +60,16 @@ const page = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17.25 8.75V17.25H8.75"
                 ></path>
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17 17L6.75 6.75"
                 ></path>
               </svg>
@@ -94,16 +94,16 @@ const page = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17.25 15.25V6.75H8.75"
                 ></path>
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M17 7L6.75 17.25"
                 ></path>
               </svg>
@@ -117,4 +117,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

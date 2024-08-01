@@ -9,7 +9,7 @@ const SpeedDialBtn: React.FC = () => {
   };
 
   return (
-    <div className="fixed end-6 bottom-6 group">
+    <div className="fixed z-50 end-6 bottom-20 group">
       <div
         id="speed-dial-menu-vertical"
         className={`flex flex-col items-center mb-4 space-y-2 ${
@@ -97,13 +97,12 @@ const SpeedDialBtn: React.FC = () => {
       </div>
 
       {/* Toggle Button */}
-
       <button
         onClick={toggleMenu}
         type="button"
         data-dial-toggle="speed-dial-menu-default"
         aria-controls="speed-dial-menu-default"
-        aria-expanded="false"
+        aria-expanded={open}
         className="flex items-center justify-center text-white bg-blue-700 rounded-full w-12 h-12 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
       >
         <svg
@@ -115,9 +114,9 @@ const SpeedDialBtn: React.FC = () => {
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M9 1v16M1 9h16"
           />
         </svg>
