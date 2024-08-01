@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+// Simulate a component that fetches data
+// const UserList = React.lazy(() => import("./UserList"));
 
 const Users = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,6 +12,10 @@ const Users = () => {
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      {/* <Suspense fallback={<Loading/>}>
+        <UserList />
+      </Suspense> */}
+
       <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 items-center justify-between pb-4">
         <div>
           <button
@@ -181,7 +187,6 @@ const Users = () => {
             ))}
         </tbody>
       </table>
-      
     </div>
   );
 };

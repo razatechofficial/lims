@@ -32,6 +32,12 @@ const Sidebar: React.FC<any> = ({ children }) => {
       icon: <MapPinned size={20} />,
       isAlert: false,
     },
+    {
+      path: "/weather",
+      label: "Weather",
+      icon: <MapPinned size={20} />,
+      isAlert: true,
+    },
   ];
 
   return (
