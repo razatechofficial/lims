@@ -1,5 +1,12 @@
 "use client";
-import { Home, MoreVertical, Menu, ChevronLeft } from "lucide-react";
+import {
+  Home,
+  MoreVertical,
+  Menu,
+  ChevronLeft,
+  MapPinned,
+  UsersRound,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
@@ -13,8 +20,18 @@ const Sidebar: React.FC<any> = ({ children }) => {
   const { theme } = useTheme(); // Access the current theme
   const navItems = [
     { path: "/", label: "Home", icon: <Home size={20} />, isAlert: true },
-    { path: "/users", label: "Users", icon: <Home size={20} />, isAlert: true },
-    { path: "/map", label: "UGVMap", icon: <Home size={20} />, isAlert: false },
+    {
+      path: "/users",
+      label: "Users",
+      icon: <UsersRound size={20} />,
+      isAlert: true,
+    },
+    {
+      path: "/map",
+      label: "UGVMap",
+      icon: <MapPinned size={20} />,
+      isAlert: false,
+    },
   ];
 
   return (
