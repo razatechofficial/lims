@@ -1,4 +1,5 @@
 "use client";
+import UserForm from "@/components/DialogModals/Forms/UserForm";
 import React, { useState } from "react";
 // Simulate a component that fetches data
 // const UserList = React.lazy(() => import("./UserList"));
@@ -15,7 +16,7 @@ const Users = () => {
       {/* <Suspense fallback={<Loading/>}>
         <UserList />
       </Suspense> */}
-
+      <UserForm />
       <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 items-center justify-between pb-4">
         <div>
           <button

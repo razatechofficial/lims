@@ -2,7 +2,10 @@ import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import SpeedDialBtn from "@/components/SpeedDial/SpeedDialBtn";
+import BasicModal from "@/components/ui/BasicModal";
+import ContextProviders from "@/context/ContextProviders";
 import { SidebarProvider } from "@/context/SidebarContext";
+
 // import { Suspense } from "react";
 // import Loading from "./loading";
 
@@ -13,7 +16,7 @@ export default function DefaultLayout({
 }) {
   return (
     <>
-      <SidebarProvider>
+      <ContextProviders>
         <div className="flex h-screen dark:bg-slate-900 dark:text-gray-200 duration-300">
           <Sidebar />
           <div className="flex-1 overflow-auto transition-all duration-300">
@@ -25,9 +28,10 @@ export default function DefaultLayout({
             </main>
             <SpeedDialBtn />
             <Footer />
+            <BasicModal/>
           </div>
         </div>
-      </SidebarProvider>
+      </ContextProviders>
     </>
   );
 }

@@ -1,11 +1,11 @@
-// import Loading from "@/components/Loading/Loading";
+import Loader from "@/components/ui/Loader";
 import dynamic from "next/dynamic";
 import React from "react";
 
 // Dynamically import the LeafletMap component
 const LeafletMap = dynamic(() => import("@/components/Map/LeafletMap"), {
   ssr: false, // Disable server-side rendering for LeafletMap
-  // loading: () => <Loading />,
+  loading: () => <Loader />,
 });
 
 const MapPage: React.FC = () => {

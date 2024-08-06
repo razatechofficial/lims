@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/ThemeProviders";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "LIMS",
@@ -26,7 +31,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
