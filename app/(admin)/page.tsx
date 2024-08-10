@@ -1,11 +1,29 @@
+"use client";
+import Chart1 from "@/components/Charts/Chart1";
+import Chart2 from "@/components/Charts/Chart2";
+import Chart3 from "@/components/Charts/Chart3";
+import Chart4 from "@/components/Charts/Chart4";
+import Chart5 from "@/components/Charts/Chart5";
+import Chart6 from "@/components/Charts/Chart6";
+import ChartComponent from "@/components/Charts/SampleChart";
+// import UGVLineChart from "@/components/Charts/UGVApexLineChart";
+import UGVDoughnutChart from "@/components/Charts/UGVDoughnutChart";
+import dynamic from "next/dynamic";
 import React from "react";
+
+const UGVLineChart = dynamic(
+  () => import("@/components/Charts/UGVApexLineChart"),
+  {
+    ssr: false, // Disable server-side rendering
+  }
+);
 
 const Page = () => {
   return (
     <>
       <h1 className="text-2xl font-semibold">Home</h1>
       {/* dashboard content here */}
-      <div className="mt-4">
+      <div className="mt-4 ">
         <p>Welcome admin!</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           <div className="p-4 border-slate-800 dark:bg-slate-800 dark:text-gray-200 dark:border-slate-500 rounded ring-1 ring-slate-900/5 shadow-xl">
@@ -111,7 +129,48 @@ const Page = () => {
           </div>
         </div>
 
+        {/* <hr className="mt-5 dark:border-slate-500" /> */}
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+         
+          <div className="col-span-2">
+            <Chart2 />
+          </div>
+          <div className="col-1">
+            <Chart4 />
+          </div>
+        </div> */}
+        {/* <hr className="mt-5 dark:border-slate-500" /> */}
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        
+          <Chart2 />
+          <Chart3 />
+          <Chart4 />
+        </div> */}
+
         <hr className="mt-5 dark:border-slate-500" />
+        <div className="mt-6 grid gap-6 xl:grid-cols-3">
+          <div className="panel h-full xl:col-span-2">
+            <Chart6 />
+          </div>
+
+          <div className=" h-full">
+            <Chart4 />
+          </div>
+        </div>
+
+        {/* ***************** */}
+
+        {/* <div className="mt-6 grid gap-6 xl:grid-cols-3">
+          <div className="panel h-full xl:col-span-2">
+            <Chart6 />
+          </div>
+
+          <div className=" h-full">
+            <Chart6 />
+          </div>
+        </div> */}
       </div>
     </>
   );

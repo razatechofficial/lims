@@ -6,7 +6,7 @@ const Footer = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebar();
   return (
     <footer
-      className={`flex justify-center items-center fixed bottom-0 left-16 right-0 p-3 bg-white border-t border-gray-200 shadow  md:p-[1.37rem] dark:bg-gray-900 dark:border-gray-600 ${
+      className={`flex z-20 justify-center items-center fixed bottom-0 left-16 right-0 p-3 bg-white border-t border-gray-200 shadow  md:p-[1.37rem] dark:bg-gray-900 dark:border-gray-600 ${
         isSidebarOpen ? "md:left-64" : ""
       }`}
     >

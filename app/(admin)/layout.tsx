@@ -21,7 +21,7 @@ export default function DefaultLayout({
           <Sidebar />
           <div className="flex-1 overflow-auto transition-all duration-300">
             <NavBar />
-            <main className="top-50 p-4 pb-24 overflow-auto lg:ml-0 transition-all duration-300 lg:pl-4 pl-20 lg:pr-4">
+            <main className="bg-slate-50 dark:bg-[#060818] top-50 p-4 pb-24 overflow-auto lg:ml-0 transition-all duration-300 lg:pl-4 pl-20 lg:pr-4">
               {/* <Suspense fallback={<Loading/>}> */}
               {children}
               {/* </Suspense> */}

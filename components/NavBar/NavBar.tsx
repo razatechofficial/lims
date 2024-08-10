@@ -7,7 +7,7 @@ import { useSidebar } from "@/context/SidebarContext";
 const NavBar = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebar();
   return (
-    <nav className="flex sticky z-10 top-0 items-center justify-between dark:bg-slate-900 dark:text-gray-100 duration-100 px-4 py-2 shadow-sm border-b dark:border-slate-500 lg:pl-4 pl-20">
+    <nav className="flex sticky z-20 top-0 items-center justify-between bg-white dark:bg-slate-900 dark:text-gray-100 duration-100 px-4 py-2 shadow-sm border-b dark:border-slate-500 lg:pl-4 pl-20">
       <div className="flex items-center">
         {!isSidebarOpen && (
           <button
